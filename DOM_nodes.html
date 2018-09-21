@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> DOM nodes </title>
+		<script type="text/javascript">
+			
+			var node = null;
+
+			function clearUp() {
+	            var imgList = document.getElementsByTagName("img");
+	            for (var i = 0; i < imgList.length; i++) {
+	                imgList[i].setAttribute("style", "border: 5px solid white;");
+	            }
+	        }
+			
+			function chooseFirstChild() {
+				clearUp();
+	            var block = document.getElementById("div");
+	            var child = block.firstChild;
+	            if (child != null) {
+	                child.setAttribute("style", "border: 5px solid black;");
+	            }
+	        }
+
+	        function chooseLastChild() {
+	        	clearUp();
+	            var block = document.getElementById("div");
+	            var child = block.lastChild;
+	            if (child != null) {
+	                child.setAttribute("style", "border: 5px solid black;");
+	            }
+	        }
+
+	        function chooseNextNode() {
+	            clearUp();
+	            if (node == null) {
+	                var block = document.getElementById("div");
+	                node = block.firstChild;
+	                node.setAttribute("style", "border: 5px solid black;");
+	                return;
+	            }
+	            node = node.nextSibling;
+	            if (node != null) {
+	                node.setAttribute("style", "border: 5px solid black;");
+	            }
+	        }
+
+	        function choosePrevNode() {
+	            clearUp();
+	            if (node == null) {
+	                var block = document.getElementById("div");
+	                node = block.lastChild;
+	                node.setAttribute("style", "border: 5px solid black;");
+	                return;
+	            }
+	            node = node.previousSibling;
+	            if (node != null) {
+	                node.setAttribute("style", "border: 5px solid black;");
+	            }
+	        }	        
+
+	        function createChildAtLast() {
+	            var block = document.getElementById("div");
+	            var element = document.createElement("img");
+	            element.setAttribute("src", "Images/owl.png");
+	            element.setAttribute("style", "border: 5px solid white;");
+	            block.appendChild(element);
+	        }
+
+	        function removeChildAtLast() {
+	            var block = document.getElementById("div");
+	            var element = block.lastChild;
+	            if (element != null) {
+	                block.removeChild(element);
+	            }
+	        }
+
+	        function createChildAtStart() {
+	            var block = document.getElementById("div");
+	            var element = document.createElement("img");
+	            element.setAttribute("src", "Images/owl.png");
+	            element.setAttribute("style", "border: 5px solid white;");
+	            if (block.firstChild != null) {
+	                block.insertBefore(element, block.firstChild);
+	            }
+	        }
+
+		</script>
+	</head>
+	<body>
+		<div id="div" style="margin: 20px auto; text-align: center;"><img src="Images/butterfly.png" style="border: 5px solid white;"><img src="Images/moon.png" style="border: 5px solid white;"><img src="Images/owl.png" style="border: 5px solid white;"><img src="Images/squirrel.png" style="border: 5px solid white;"><img src="Images/sun.png" style="border: 5px solid white;"><img src="Images/triangle.png" style="border: 5px solid white;"></div>
+
+		<form style="margin: 20px auto; text-align: center;">
+			<input type="button" onclick="chooseFirstChild()" style="width: 210px; height: 30px;" value="Выбрать первый элемент" /><br />
+		    <input type="button" onclick="chooseLastChild()" style="width: 210px; height: 30px;" value="Выбрать последний элемент" /><br />
+		    <input type="button" onclick="chooseNextNode()" style="width: 210px; height: 30px;" value="Выбрать следующий элемент" /><br />
+		    <input type="button" onclick="choosePrevNode()" style="width: 210px; height: 30px;" value="Выбрать предыдущий элемент" /><br />
+		    <input type="button" onclick="createChildAtLast()" style="width: 210px; height: 30px;" value="Добавить в конец" /><br />
+		    <input type="button" onclick="removeChildAtLast()" style="width: 210px; height: 30px;" value="Удалить с конца" /><br />
+		    <input type="button" onclick="createChildAtStart()" style="width: 210px; height: 30px;" value="Добавить в начало" /><br />
+		</form>
+	</body>
+</html>
